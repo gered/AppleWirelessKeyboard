@@ -21,7 +21,10 @@ namespace AppleWirelessKeyboard
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             TrayIcon.Show();
-            uxsoft.VersionCheck();
+
+			// Version check updating disabled because this is a fork and it would obviously 
+			// be bad of us to update this forked version with the original...
+            //uxsoft.VersionCheck();
 
             if (!StartupShortcut.IsRegistered)
                 StartupShortcut.Register();
