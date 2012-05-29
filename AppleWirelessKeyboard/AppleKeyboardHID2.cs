@@ -65,66 +65,108 @@ namespace AppleWirelessKeyboard
                 {
                     byte num1 = buffer2[i];
                 }
-                if (asyncState[0] == 0x11)
-                {
-                    switch (asyncState[1])
-                    {
-                        case 24:
-                            {
-                                EjectDown = true;
-                                FnDown = true;
-                                if (KeyDown != null)
-                                    KeyDown(AppleKeyboardSpecialKeys.Eject);
-                            }
-                            break;
-                        case 16:
-                            {
-                                if (EjectDown)
-                                {
-                                    EjectDown = false;
-                                    if (KeyUp != null)
-                                        KeyUp(AppleKeyboardSpecialKeys.Eject);
-                                }
-                                FnDown = true;
-                                if (KeyDown != null)
-                                    KeyDown(AppleKeyboardSpecialKeys.Fn);
-                            }
-                            break;
-                        case 8:
-                            {
-                                if (FnDown)
-                                {
-                                    FnDown = false;
-                                    if (KeyUp != null)
-                                        KeyUp(AppleKeyboardSpecialKeys.Fn);
-                                }
-                                EjectDown = true;
-                                if (KeyDown != null)
-                                    KeyDown(AppleKeyboardSpecialKeys.Eject);
-                            }
-                            break;
-                        case 0:
-                            {
-                                if (EjectDown)
-                                {
-                                    EjectDown = false;
-                                    if (KeyUp != null)
-                                        KeyUp(AppleKeyboardSpecialKeys.Eject);
-                                }
-                                if (FnDown)
-                                {
-                                    FnDown = false;
-                                    if (KeyUp != null)
-                                        KeyUp(AppleKeyboardSpecialKeys.Fn);
-                                }
-                            }
-                            break;
-                    }
-                }
-                else if (asyncState[0] == 0x13)
-                {
-                    CurrentPowerButtonIsDown = asyncState[1] == 1;
-                }
+
+				// TODO: would be nice if we could replace this property with some auto-detection to figure out
+				//       if the user is using a wired or wireless keyboard based on the device information...
+				//       not sure how to do this currently because I don't have a wireless keyboard to test with.
+				if (AppleWirelessKeyboard.Properties.Settings.Default.WiredKeyboard)
+				{
+					// This is probably a big ol' ugly hack... but it seems to work well so far.
+					//
+					// With the wired Apple Keyboard I have (http://store.apple.com/us/product/MB110LL/B), this whole method
+					// _only_ does anything when the Eject key is pressed/released. No other keys or combination of keys
+					// that I tried causes the SpecialKeyStateChanged event to fire. This is using the default driver that
+					// Windows 7 installs when I first plugged in my keyboard. (FWIW, the Apple driver from Lion's BootCamp
+					// files didn't change anything).
+					//
+					// With the wired keyboard, the bytes in asyncState will be different then the original code here is
+					// expecting (which is for the wireless keyboard).
+					//
+					// Basically, when using the wired keyboard:
+					// * when the Eject key is pressed:   (asyncState[0] == 0x0 && asyncState[1] == 0x8) == true
+					// * when the Eject key is released:  (asyncState[0] == 0x0 && asyncState[1] == 0x0) == true
+					//
+					// This _appears_ to be safe for use with the wired keyboard because, as noted above, no other keys
+					// or combinations of keys cause this method to be fired in the first place.
+
+
+					Debug.WriteLine(String.Format("{0}, {1}", asyncState[0], asyncState[1]));
+					if (asyncState[0] == 0x0 && asyncState[1] == 0x8)
+					{
+						EjectDown = true;
+						KeyDown(AppleKeyboardSpecialKeys.Eject);
+					}
+					else if (asyncState[0] == 0x0 && asyncState[1] == 0x0)
+					{
+						EjectDown = false;
+						KeyUp(AppleKeyboardSpecialKeys.Eject);
+					}
+				}
+				else
+				{
+					// Original code to handle the wireless keyboard left completely intact.
+
+					if (asyncState[0] == 0x11)
+					{
+						switch (asyncState[1])
+						{
+							case 24:
+								{
+									EjectDown = true;
+									FnDown = true;
+									if (KeyDown != null)
+										KeyDown(AppleKeyboardSpecialKeys.Eject);
+								}
+								break;
+							case 16:
+								{
+									if (EjectDown)
+									{
+										EjectDown = false;
+										if (KeyUp != null)
+											KeyUp(AppleKeyboardSpecialKeys.Eject);
+									}
+									FnDown = true;
+									if (KeyDown != null)
+										KeyDown(AppleKeyboardSpecialKeys.Fn);
+								}
+								break;
+							case 8:
+								{
+									if (FnDown)
+									{
+										FnDown = false;
+										if (KeyUp != null)
+											KeyUp(AppleKeyboardSpecialKeys.Fn);
+									}
+									EjectDown = true;
+									if (KeyDown != null)
+										KeyDown(AppleKeyboardSpecialKeys.Eject);
+								}
+								break;
+							case 0:
+								{
+									if (EjectDown)
+									{
+										EjectDown = false;
+										if (KeyUp != null)
+											KeyUp(AppleKeyboardSpecialKeys.Eject);
+									}
+									if (FnDown)
+									{
+										FnDown = false;
+										if (KeyUp != null)
+											KeyUp(AppleKeyboardSpecialKeys.Fn);
+									}
+								}
+								break;
+						}
+					}
+					else if (asyncState[0] == 0x13)
+					{
+						CurrentPowerButtonIsDown = asyncState[1] == 1;
+					}
+				}
                 _stream.BeginRead(asyncState, 0, asyncState.Length, new AsyncCallback(SpecialKeyStateChanged), asyncState);
             }
         }
