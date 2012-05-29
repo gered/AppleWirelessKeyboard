@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="AppleWirelessKeyboard.Glyphs.VolumeOn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="192" d:DesignWidth="192">
+    <Canvas Width="119.46525" Height="109.50375">
+        <Path Fill="White" Data=" M 114.000,2.008 C 120.750,-8.742 159.287,24.846 159.287,74.605 C 159.287,115.342 121.000,155.508 111.000,144.008 C 104.500,134.175 146.375,121.403 146.375,74.605 C 146.375,22.008 105.500,16.258 114.000,2.008 Z"/>
+        <Path Fill="White" Data=" M 27.000,94.008 C 27.000,94.008 9.000,94.008 0.000,94.008 C 0.000,81.341 0.000,56.008 0.000,56.008 L 26.000,56.008 L 65.000,18.008 L 66.000,130.008"/>
+        <Path Fill="White" Data=" M 96.000,123.008 C 90.125,113.758 117.000,106.327 117.000,76.883 C 117.000,41.258 91.750,33.633 99.463,26.237 C 108.294,17.768 126.785,49.633 126.750,76.508 C 126.715,103.032 101.375,130.883 96.000,123.008 Z"/>
+        <Path Fill="White" Data=" M 84.499,98.220 C 82.567,93.070 94.460,87.513 94.460,73.824 C 94.460,62.008 78.208,57.856 83.651,51.260 C 87.917,46.092 102.259,59.757 102.281,73.824 C 102.305,88.341 87.431,106.035 84.499,98.220 Z"/>
+        <Canvas.RenderTransform>
+            <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+        </Canvas.RenderTransform>
+    </Canvas>
+</UserControl>

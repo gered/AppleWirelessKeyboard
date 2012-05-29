@@ -1,0 +1,22 @@
+﻿<Window x:Class="AppleWirelessKeyboard.Views.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:properties="clr-namespace:AppleWirelessKeyboard.Properties"
+        Title="Configuration" Height="300" Width="300">
+    <Window.Resources>
+        <properties:Settings x:Key="Settings"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Swap Control and Fn:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray"/>
+        <CheckBox Name="swapCtrlFn" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.SwapCtrlFn}"/>
+        
+    </Grid>
+</Window>
