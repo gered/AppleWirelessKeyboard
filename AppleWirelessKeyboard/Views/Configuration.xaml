@@ -19,7 +19,7 @@
         <TextBlock Text="F keys are Mac special function keys by default:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray" TextWrapping="Wrap"/>
         <CheckBox Name="fMode"  Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.FMode}"/>
 
-        <TextBlock Text="Wired Keyboard. If enabled, fixes Eject key handling so that it toggles the above option on/off when pressed." Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray" TextWrapping="Wrap"/>
+        <TextBlock Text="Wired Keyboard. If enabled, fixes Eject key handling on a wired keyboard so that it toggles the above option on/off when pressed." Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray" TextWrapping="Wrap"/>
         <CheckBox Name="wiredKeyboard" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredKeyboard}"/>
     </Grid>
 </Window>
