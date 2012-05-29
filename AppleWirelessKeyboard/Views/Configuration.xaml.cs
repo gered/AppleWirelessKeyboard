@@ -22,5 +22,10 @@ namespace AppleWirelessKeyboard.Views
         {
             InitializeComponent();
         }
+
+		protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+		{
+			Properties.Settings.Default.Save();
+		}
     }
 }
