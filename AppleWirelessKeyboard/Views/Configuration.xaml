@@ -14,16 +14,12 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         
         <TextBlock Text="F keys are Mac special function keys by default:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray" TextWrapping="Wrap"/>
         <CheckBox Name="fMode"  Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.FMode}"/>
 
-        <TextBlock Text="Swap Control and Fn:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray"/>
-        <CheckBox Name="swapCtrlFn" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.SwapCtrlFn}"/>
-
-        <TextBlock Text="Wired Keyboard:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray"/>
-        <CheckBox Name="wiredKeyboard" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredKeyboard}"/>
+        <TextBlock Text="Wired Keyboard:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,6,0" Foreground="Gray"/>
+        <CheckBox Name="wiredKeyboard" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredKeyboard}"/>
     </Grid>
 </Window>
