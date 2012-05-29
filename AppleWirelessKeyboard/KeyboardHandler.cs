@@ -29,6 +29,8 @@ namespace AppleWirelessKeyboard
                     if (value)
                         NotificationCenter.NotifyOn();
                     else NotificationCenter.NotifyOff();
+
+					AppleWirelessKeyboard.Properties.Settings.Default.Save();
                 }
             }
         }
