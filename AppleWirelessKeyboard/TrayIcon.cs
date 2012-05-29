@@ -28,7 +28,6 @@ namespace AppleWirelessKeyboard
 
 			MenuItem[] menuItems = new[] { 
                 new MenuItem("Configure", TriggerConfigure),
-                new MenuItem("Restart", TriggerRestart),
                 new MenuItem("Refresh", TriggerRefresh),
                 new MenuItem("Exit", TriggerExit)
             };
@@ -43,11 +42,7 @@ namespace AppleWirelessKeyboard
 			_icon = null;
 		}
 
-        private void TriggerRestart(object sender, EventArgs e)
-        {
-            Application.Restart();
-        }
-        private void TriggerConfigure(object sender, EventArgs e)
+		private void TriggerConfigure(object sender, EventArgs e)
         {
             (new Configuration()).Show();
         }
