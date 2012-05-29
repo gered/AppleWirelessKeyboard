@@ -18,9 +18,12 @@ namespace AppleWirelessKeyboard
     {
         public static MainWindow Window { get; set; }
 
+		private TrayIcon _trayIcon = null;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            TrayIcon.Show();
+			_trayIcon = new TrayIcon(this);
+			_trayIcon.Show();
 
 			// Version check updating disabled because this is a fork and it would obviously 
 			// be bad of us to update this forked version with the original...
@@ -100,6 +103,7 @@ namespace AppleWirelessKeyboard
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+			_trayIcon.Close();
             KeyboardListener.UnRegister();
             AppleKeyboardHID2.Shutdown();
         }

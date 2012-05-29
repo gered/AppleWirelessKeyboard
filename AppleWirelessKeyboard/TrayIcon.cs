@@ -9,43 +9,54 @@ using AppleWirelessKeyboard.Views;
 
 namespace AppleWirelessKeyboard
 {
-    public static class TrayIcon
+    public class TrayIcon
     {
-        static TrayIcon()
-        {
-            NotifyIcon icon = new NotifyIcon();
-            icon.Text = "AppleWirelessKeyboard";
-            icon.Icon = new Icon(App.GetResourceStream(new Uri("pack://application:,,,/Gnome-Preferences-Desktop-Keyboard-Shortcuts.ico")).Stream);
-            icon.Visible = true;
+		private System.Windows.Application _application = null;
+		private NotifyIcon _icon = null;
 
-            MenuItem[] menuItems = new[] { 
+		public TrayIcon(System.Windows.Application application)
+		{
+			_application = application;
+		}
+
+        public void Show()
+		{
+			_icon = new NotifyIcon();
+			_icon.Text = "AppleWirelessKeyboard";
+			_icon.Icon = new Icon(App.GetResourceStream(new Uri("pack://application:,,,/Gnome-Preferences-Desktop-Keyboard-Shortcuts.ico")).Stream);
+			_icon.Visible = true;
+
+			MenuItem[] menuItems = new[] { 
                 new MenuItem("Configure", TriggerConfigure),
                 new MenuItem("Restart", TriggerRestart),
                 new MenuItem("Refresh", TriggerRefresh),
                 new MenuItem("Exit", TriggerExit)
             };
 
-            ContextMenu menu = new ContextMenu(menuItems);
-            icon.ContextMenu = menu;
-        }
+			ContextMenu menu = new ContextMenu(menuItems);
+			_icon.ContextMenu = menu;
+		}
 
-        public static void Show() { }
+		public void Close()
+		{
+			_icon.Visible = false;
+			_icon = null;
+		}
 
-        private static void TriggerRestart(object sender, EventArgs e)
+        private void TriggerRestart(object sender, EventArgs e)
         {
             Application.Restart();
         }
-        private static void TriggerConfigure(object sender, EventArgs e)
+        private void TriggerConfigure(object sender, EventArgs e)
         {
             (new Configuration()).Show();
         }
-        private static void TriggerExit(object sender, EventArgs e)
+        private void TriggerExit(object sender, EventArgs e)
         {
-            //Application.Exit();
-            Environment.Exit(0);
+			_application.Shutdown();
         }
 
-        public static void TriggerRefresh(object sender, EventArgs e)
+        public void TriggerRefresh(object sender, EventArgs e)
         {
             if (AppleKeyboardHID2.Registered)
                 AppleKeyboardHID2.Shutdown();
