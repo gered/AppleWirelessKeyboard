@@ -8,8 +8,6 @@ also includes some basic support for the wired variant of the Apple Keyboard.
 This utility isn't really useful or needed if you're running BootCamp on a real
 Mac. Just stick with the Apple BootCamp stuff.
 
-[Current download available here.](https://github.com/downloads/gered/AppleWirelessKeyboard/AppleWirelessKeyboard.exe)
-
 Usage
 -----
 
