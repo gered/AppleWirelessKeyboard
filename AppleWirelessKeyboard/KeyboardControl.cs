@@ -18,10 +18,10 @@ namespace AppleWirelessKeyboard
         const int VK_MEDIA_PREV_TRACK = 177;
         const int VK_MEDIA_STOP = 178;
         const int VK_MEDIA_PLAY_PAUSE = 179;
-        const int VK_END = 37;
-        const int VK_HOME = 36;
-        const int VK_PAGEUP = 33;
-        const int VK_PAGEDOWN = 35;
+        const int VK_END = 0x23;
+        const int VK_HOME = 0x24;
+        const int VK_PAGEUP = 0x21;
+        const int VK_PAGEDOWN = 0x22;
         const int VK_F3 = 117;
         const int VK_INSERT = 45;
 
