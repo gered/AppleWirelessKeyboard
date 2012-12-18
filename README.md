@@ -73,5 +73,6 @@ Issues / Missing Functionality
 Bug Fixes
 ---------
 
+* Fixes virtual key codes used for Home, End, Page Up and Page Down keys (the Fn + Arrow combos available on wireless keyboards).
 * Config settings are now saved. When you re-open the tool your last settings will still be there.
 * The system tray icon now disappears when the tool is closed and the tool now closes properly (the "WPF way").
