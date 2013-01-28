@@ -93,13 +93,29 @@ namespace AppleWirelessKeyboard
 					Debug.WriteLine(String.Format("{0}, {1}", asyncState[0], asyncState[1]));
 					if (asyncState[0] == 0x0 && asyncState[1] == 0x8)
 					{
-						EjectDown = true;
-						KeyDown(AppleKeyboardSpecialKeys.Eject);
+						if (AppleWirelessKeyboard.Properties.Settings.Default.WiredHoldEjectForFn)
+						{
+							FnDown = true;
+							KeyDown(AppleKeyboardSpecialKeys.Fn);
+						}
+						else
+						{
+							EjectDown = true;
+							KeyDown(AppleKeyboardSpecialKeys.Eject);
+						}
 					}
 					else if (asyncState[0] == 0x0 && asyncState[1] == 0x0)
 					{
-						EjectDown = false;
-						KeyUp(AppleKeyboardSpecialKeys.Eject);
+						if (AppleWirelessKeyboard.Properties.Settings.Default.WiredHoldEjectForFn)
+						{
+							FnDown = false;
+							KeyUp(AppleKeyboardSpecialKeys.Fn);
+						}
+						else
+						{
+							EjectDown = false;
+							KeyUp(AppleKeyboardSpecialKeys.Eject);
+						}
 					}
 				}
 				else

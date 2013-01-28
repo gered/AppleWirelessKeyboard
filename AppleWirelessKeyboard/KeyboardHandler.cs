@@ -19,7 +19,7 @@ namespace AppleWirelessKeyboard
         {
             get
             {
-                return AppleWirelessKeyboard.Properties.Settings.Default.FMode;
+				return AppleWirelessKeyboard.Properties.Settings.Default.FMode;
             }
             set
             {
@@ -44,7 +44,12 @@ namespace AppleWirelessKeyboard
 
         public static bool HandleKeyDown(KeyboardListener.KeyHookEventArgs e)
         {
-            bool F = (FMode || e.ModifierFn) && !e.ModifierAnyNative;
+			bool F;
+			if (AppleWirelessKeyboard.Properties.Settings.Default.WiredKeyboard && 
+				AppleWirelessKeyboard.Properties.Settings.Default.WiredHoldEjectForFn)
+				F = e.ModifierFn && !e.ModifierAnyNative;
+			else
+				F = (FMode || e.ModifierFn) && !e.ModifierAnyNative;
 
             switch (e.Key)
             {
