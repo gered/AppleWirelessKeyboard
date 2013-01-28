@@ -2,28 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:AppleWirelessKeyboard.Properties"
-        Title="Configuration" Height="385" Width="338">
+        Title="Configuration" Height="340" Width="350">
     <Window.Resources>
         <properties:Settings x:Key="Settings"/>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="78*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-        <TextBlock Text="F keys are Mac special function keys by default:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="6,0" Foreground="Gray" TextWrapping="Wrap"/>
-        <CheckBox Name="fMode"  Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.FMode}"/>
-
-        <TextBlock Text="Wired Keyboard. If enabled, fixes Eject key handling on a wired keyboard so that it toggles the above option on/off when pressed. This must be checked for the below option to work." Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="6,0" Foreground="Gray" TextWrapping="Wrap" Width="184" />
-        <CheckBox Name="wiredKeyboard" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredKeyboard}"/>
-
-        <TextBlock Text="(Wired Keyboard only) Eject key emulates Fn key. If enabled, allows holding Eject + [function key] to do the same as Fn + [function key] does on a wireless keyboard." Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="6,0" Foreground="Gray" TextWrapping="Wrap"/>
-        <CheckBox Name="wiredHoldEjectForFn" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredHoldEjectForFn}"/>
-    </Grid>
+    <StackPanel Orientation="Vertical" Margin="10">
+        <CheckBox Name="wiredKeyboard" Content="Wired Keyboard" FontWeight="Bold" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredKeyboard}" />
+        <TextBlock Text="Fixes Eject key handling on a wired keyboard. When this is enabled, pressing the Eject key will toggle the 'F Mode' option below on/off." Margin="18,0,0,10" TextWrapping="Wrap" />
+        <CheckBox Name="fMode" Content="F Mode" FontWeight="Bold" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.FMode}" />
+        <TextBlock Text="When enabled, the function keys, F1 to F12, are Mac special function keys by default (when pressed without the Fn or Eject key held down)." Margin="18,0,0,10" TextWrapping="Wrap" />
+        <CheckBox Name="wiredHoldEjectForFn" Content="Emulate Fn with Eject Key (Wired Keyboard Only)" FontWeight="Bold" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.WiredHoldEjectForFn}" />
+        <TextBlock Text="Changes the behaviour of the Eject key when the 'Wired Keyboard' option is enabled. Makes the Eject key emulate the Fn key. If enabled, allows holding Eject+[function key] to do the same thing as Fn+[function key] does on a wireless keyboard." Margin="18,0,0,10" TextWrapping="Wrap" />
+    </StackPanel>
 </Window>
