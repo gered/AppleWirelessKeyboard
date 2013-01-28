@@ -8,33 +8,24 @@ also includes some basic support for the wired variant of the Apple Keyboard.
 This utility isn't really useful or needed if you're running BootCamp on a real
 Mac. Just stick with the Apple BootCamp stuff.
 
+**Please note that this tool still doesn't make the Fn key on a wired keyboard
+work**. It just provides wired keyboard users with some decent alternatives.
+
 Usage
 -----
 
-This is basically just the exact same AppleWirelessKeyboard tool with a few
-minor bug fixes and two new config options. The new config options are:
+Build or download the executable AppleWirelessKeyboard.exe and run it. By
+default it will be configured for use with a wireless keyboard. To enable the
+wired keyboard fixes, right click the AppleWirelessKeyboard icon in your system
+tray and choose "Configure."
 
-* F keys are Mac special function keys by default [on/off]
-* Wired Keyboard. If enabled, fixes Eject key handling on a wired keyboard so that it toggles the above option on/off when pressed [on/off]
+To fix Eject key handling so that you can use it to toggle between the function
+keys working as on Windows or Mac once again, check "Wired Keyboard."
 
-Unfortunately, as I don't own an Apple wireless keyboard I did not add any kind
-of hardware auto-detection to toggle the second "Wired Keyboard" config option
-on or off as needed. For now you will need to set this option manually.
+You can also use the Eject key to emulate the Fn key by checking the last
+option. This makes it so that you can press Eject + F1 - F12 and have
+it work in the same exact manner as pressing Fn + F1 - F12 would.
 
-When the "Wired Keyboard" option is turned off, everything will (should) work
-just as it did with the original version of this utility. This means things
-won't be quite perfect for you if you are using a wired keyboard and not a 
-wireless one.
-
-When the "Wired Keyboard" option is turned on, the Eject key will be fixed to
-work the same way as it does with a wireless keyboard when using the original 
-version of this utility. That is, it is used to toggle if the function keys (F1 
-through F12) work as on Windows or OS X.
-
-This tool does not make the 'Fn' key work with a wired keyboard. It just
-gives you a simple work around. If you are using a wired keyboard none of the
-'Fn' key combinations will work regardless of if you're using this version or the
-original version of this utility.
 
 Why?
 ----
@@ -65,9 +56,9 @@ to allow F key toggling like with a wireless keyboard.
 Issues / Missing Functionality
 ------------------------------
 
-* The code using iTunesLib has been commented out. I don't use iTunes nor do I have it installed, therefore I don't have a copy of this library so I couldn't build the code until I removed it. I guess it's possible that the media key mappings for F7-F9 could maybe work with iTunes? No idea.
+* The code using iTunesLib has been commented out. I don't use iTunes nor do I have it installed, therefore I don't have a copy of this library so I couldn't build the code until I removed it. I guess it's possible that the default Windows media key mappings for Eject/Fn+F7-F9 could maybe work with iTunes? No idea.
 * No automatic detection of which keyboard you are using (wired or wireless). I'd like to do this, but don't have a wireless keyboard for reference. You will need to set your config manually.
-* 'Fn' key combos still do not work with a wired keyboard. Use the Eject key to toggle F key functionality.
+* 'Fn' key combos still do not work with a wired keyboard. Use the Eject key to toggle F key functionality or enable the Fn key emulation option to use Eject as a substitute Fn key to access Fn key combos.
 * The "Restart" option is gone. This doesn't have a built-in equivalent in WPF.
 
 Bug Fixes
