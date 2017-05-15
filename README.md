@@ -14,6 +14,8 @@ work**. It just provides wired keyboard users with some decent alternatives.
 Usage
 -----
 
+[Download AppleWirelessKeyboard.exe](https://github.com/gered/AppleWirelessKeyboard/releases)
+
 Build or download the executable AppleWirelessKeyboard.exe and run it. By
 default it will be configured for use with a wireless keyboard. To enable the
 wired keyboard fixes, right click the AppleWirelessKeyboard icon in your system
